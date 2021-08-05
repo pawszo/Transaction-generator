@@ -7,11 +7,11 @@ namespace TransGenerator
     public class VoucherGenerator
     {
         private readonly Generator_config Config;
-        private int _voucher_no_curr;
-        private int PopVoucherNo()
+        private long _voucher_no_curr;
+        private long PopVoucherNo()
         {
             if (_voucher_no_curr > Config.Voucher_no_max) return -1;
-            int curr = _voucher_no_curr;
+            long curr = _voucher_no_curr;
             _voucher_no_curr++;
             return curr;
         }
@@ -65,15 +65,14 @@ namespace TransGenerator
             return validPeriods;
         }*/ //deprecated
 
-        public Voucher GetNextVoucher<T>() where T : Voucher
+        public Voucher GetNextVoucher(Type voucherType)
         {
-            var voucher = Activator.CreateInstance(typeof(T)) as Voucher;
+            var voucher = Activator.CreateInstance(voucherType) as Voucher;
             voucher.Client = Config.Client;
             voucher.Voucher_no = PopVoucherNo();
             if (voucher.Voucher_no == -1) return null;
             voucher.Supplier = GetRandomSupplier();
             voucher.Currency = Config.Currency; 
-            voucher.ImportType = Config.ImportType;
             voucher.Treat_code = Config.Treatment_code;
             voucher.Ext_inv_ref = "Invoice " + voucher.Voucher_no;
             voucher.Amount = GetRandomAmountInRange();
@@ -91,18 +90,27 @@ namespace TransGenerator
     }
     public class Generator_config
     {
-        public int Voucher_no_min { get; set; }
-        public int Voucher_no_max { get; set; }
+        public long Voucher_no_min { get; set; }
+        public long Voucher_no_max { get; set; }
         public decimal MinAmountAbs { get; set; }
         public decimal MaxAmountAbs { get; set; }
         public string Currency { get; set; }
         public string Client { get; set; }
         /// <summary>
-        /// REG / POS
+        /// TAXONLY / AP / AR
         /// </summary>
-        public string ImportType { get; set; }
+        public Type VoucherType { get; set; }
         public string ConnectionString { get; set; }
         public string Treatment_code { get; set; }
+        public bool FileMode { get; set; }
+
+        public bool CashBook { get; set; }
+        public bool BankStatement { get; set; }
+        public int BankStatementLines { get; set; }
+
+        public string BankName { get; set; }
+
+        public string Table { get; set; }
 
     }
 }

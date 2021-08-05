@@ -4,7 +4,6 @@ C:\Users\pszoltys\source\repos\TransGenerator\bin\Debug\netcoreapp3.1\TransGener
 C:\Users\pszoltys\source\repos\TransGenerator\bin\Debug\netcoreapp3.1\TransGenerator.runtimeconfig.dev.json
 C:\Users\pszoltys\source\repos\TransGenerator\bin\Debug\netcoreapp3.1\TransGenerator.dll
 C:\Users\pszoltys\source\repos\TransGenerator\bin\Debug\netcoreapp3.1\TransGenerator.pdb
-C:\Users\pszoltys\source\repos\TransGenerator\obj\Debug\netcoreapp3.1\TransGenerator.csprojAssemblyReference.cache
 C:\Users\pszoltys\source\repos\TransGenerator\obj\Debug\netcoreapp3.1\TransGenerator.Window.resources
 C:\Users\pszoltys\source\repos\TransGenerator\obj\Debug\netcoreapp3.1\TransGenerator.csproj.GenerateResource.cache
 C:\Users\pszoltys\source\repos\TransGenerator\obj\Debug\netcoreapp3.1\TransGenerator.AssemblyInfoInputs.cache
